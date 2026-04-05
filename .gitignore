@@ -1,26 +1,53 @@
-# Dependencies
+# ─── Dependencies ─────────────────────────────────────────────────────────────
 node_modules/
+**/node_modules/
 
-# Build output
+# ─── Build output ─────────────────────────────────────────────────────────────
 dist/
 dist-ssr/
+**/dist/
+**/dist-ssr/
+*.tsbuildinfo
 
-# Environment
+# ─── Vite cache ───────────────────────────────────────────────────────────────
+.vite/
+**/.vite/
+
+# ─── Environment files ────────────────────────────────────────────────────────
+# Keep .env.example — it is safe to commit (no secrets)
 .env
 .env.local
 .env.*.local
 
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-
-# Editor
+# ─── macOS ────────────────────────────────────────────────────────────────────
 .DS_Store
-.vscode/
+**/.DS_Store
+.AppleDouble
+
+# ─── Editor / IDE ─────────────────────────────────────────────────────────────
+# Allow shared VS Code workspace config
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
 .idea/
 *.swp
 *.swo
+*.sublime-project
+*.sublime-workspace
 
-# TypeScript
-*.tsbuildinfo
+# ─── Logs ─────────────────────────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── Testing ──────────────────────────────────────────────────────────────────
+coverage/
+*.lcov
+
+# ─── Misc ─────────────────────────────────────────────────────────────────────
+tmp/
+temp/
+.cache/
