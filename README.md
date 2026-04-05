@@ -1,88 +1,145 @@
-# BetPulse — Premium Sports Betting Platform
+# BetPulse — Sports Betting Platform
 
-A complete, production-quality **frontend-only** sports betting platform built with React, TypeScript, Tailwind CSS, and Zustand.
+> **Status:** Frontend MVP complete · Backend integration pending
 
-> ⚠️ **Demo Platform Only** — No real money, no real betting, no backend. All data is mocked locally.
+A full-featured, production-style sports betting web application built with React 18, TypeScript, and Tailwind CSS.  
+This project demonstrates a scalable client–server architecture where the frontend is fully functional using mock data and is designed to integrate with a real REST API backend with minimal code changes.
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
-| Layer | Technology |
+| Concern | Technology |
 |---|---|
-| Framework | React 18 + Vite |
-| Language | TypeScript (strict) |
-| Styling | Tailwind CSS v3 |
-| Routing | React Router v6 |
-| State | Zustand |
-| Animations | Framer Motion |
+| Framework | React 18 + Vite 6 |
+| Language | TypeScript 5 (strict mode) |
+| Styling | Tailwind CSS 3 |
+| Routing | React Router 7 |
+| State Management | Zustand 5 |
+| Animations | Framer Motion 11 |
 | Icons | Lucide React |
+| Package Manager | npm |
 
 ---
 
-## 📦 Getting Started
+## Current Status
+
+| Area | Status |
+|---|---|
+| UI / Component library | ✅ Complete |
+| Routing | ✅ Complete |
+| Betting slip (single + multi/acca) | ✅ Complete |
+| Auth flow (demo) | ✅ Complete |
+| Mock data layer | ✅ Complete |
+| Service / API layer (frontend contracts) | ✅ Scaffolded |
+| Backend / REST API | 🔲 Not started |
+| Database | 🔲 Not started |
+| Real-time odds (WebSocket) | 🔲 Not started |
+| Tests | 🔲 Not started |
+
+---
+
+## Features
+
+- **Sportsbook** — browse live and upcoming events across 12 sports with odds and market filtering
+- **Live Betting** — in-play events with real-time score display and market updates (mocked)
+- **Betting Slip** — single and multi/accumulator modes, stake input, and payout calculation; persisted in `localStorage`
+- **Match Detail** — per-match odds accordion, stats, and head-to-head layout
+- **User Dashboard** — balance, transaction history, notification feed, and saved matches
+- **Wallet** — deposit / withdrawal UI (demo)
+- **Promotions** — bonus cards and terms display
+- **Results** — historical match results with sport and date filtering
+- **Favourites** — saved sports and matches, toggled per user
+- **Authentication** — demo login / register flow with Zustand-persisted session
+- **Responsive** — fully mobile-friendly with a dedicated bottom navigation bar
+
+---
+
+## Local Setup
+
+See [SETUP.md](SETUP.md) for full instructions.
+
+**Quick start:**
 
 ```bash
+cd client
 npm install
 npm run dev
 # → http://localhost:5173
 ```
 
----
+**Demo credentials:**
 
-## 🗺️ Pages & Routes
-
-| Route | Page |
+| Field | Value |
 |---|---|
-| `/` | Home — hero carousel, live events, top leagues |
-| `/sports` | Sportsbook — match list with filters |
-| `/sports/live` | Live Betting — scoreboard cards |
-| `/sports/:sport` | Per-sport events |
-| `/match/:id` | Match Detail — odds, stats, H2H |
-| `/promotions` | Promotions & bonuses |
-| `/results` | Match results |
-| `/dashboard` | User dashboard |
-| `/wallet` | Wallet (demo) |
-| `/login` | Sign In |
-| `/register` | Create Account |
-| `/favorites` | Saved matches & sports |
-| `/settings` | Account preferences |
+| Email | `demo@betpulse.io` |
+| Password | `demo1234` |
 
 ---
 
-## 🎯 Key Features
-
-- **Betting Slip** — single & multi/acca mode, stake input, payout calculation, persisted in localStorage
-- **Live Ticker** — scrolling live score strip
-- **Featured Carousel** — auto-rotating hero with odds
-- **Sports Sidebar** — expandable leagues, star favourites
-- **Mobile Bottom Nav** — full responsive mobile experience
-- **Toast Notifications** — for all interactions
-- **Auth Flow** — demo login: `demo@betpulse.io` / `demo1234`
-
----
-
-## 📁 Folder Structure
+## Project Structure
 
 ```
-src/
-  components/
-    common/       # Skeleton, Toast, Badge, SearchInput, EmptyState
-    layout/       # TopNavbar, Sidebar, BettingSlipPanel, LiveTicker, MobileBottomNav
-    sportsbook/   # MatchCard, LiveMatchCard, OddsButton, MarketAccordion, FilterBar
-    home/         # FeaturedMatchCarousel, PromoCard
-  pages/          # All 13 route-level pages
-  layouts/        # MainLayout, SportsbookLayout, AuthLayout
-  store/          # betSlipStore, authStore, uiStore
-  data/           # mockData.ts (sports, matches, odds, promos, etc.)
-  types/          # TypeScript interfaces
-  utils/          # formatOdds, formatCurrency, calculatePayout, etc.
-  routes/         # AppRouter
-  styles/         # globals.css
+betting-system/
+├── client/                 # React + Vite frontend application
+│   ├── src/
+│   │   ├── components/     # Reusable UI components
+│   │   │   ├── common/     # Generic components (Badge, EmptyState, Toast, SearchInput)
+│   │   │   ├── home/       # Home-page specific components
+│   │   │   ├── layout/     # App shell components (Navbar, Sidebar, BetSlip)
+│   │   │   └── sportsbook/ # Match cards, odds buttons, market accordion
+│   │   ├── config/         # App-wide constants and environment config
+│   │   ├── data/           # Static mock data (replaces API calls during development)
+│   │   ├── hooks/          # Reusable custom React hooks
+│   │   ├── layouts/        # Page layout wrappers (Main, Sportsbook, Auth)
+│   │   ├── pages/          # Route-level page components (one per route)
+│   │   ├── routes/         # Centralised router definition
+│   │   ├── services/       # API / data service layer (mock-backed, API-ready)
+│   │   ├── store/          # Zustand state stores (auth, betSlip, ui)
+│   │   ├── styles/         # Global CSS and Tailwind base styles
+│   │   ├── types/          # Shared TypeScript interfaces and types
+│   │   └── utils/          # Pure utility functions (formatting, helpers)
+│   └── public/             # Static assets served as-is
+├── server/                 # Future Node.js / Express backend (scaffolded)
+├── SETUP.md
+├── PROJECT_STRUCTURE.md
+└── README.md               # ← You are here
 ```
+
+See [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) for a detailed breakdown.
 
 ---
 
-## ⚠️ Disclaimer
+## Planned Improvements
 
-This is a **demonstration UI only**. No real gambling functionality exists. 18+ | Please gamble responsibly.
+- [ ] Real REST API (Node.js + Express or Fastify)
+- [ ] PostgreSQL database with Prisma ORM
+- [ ] JWT authentication with refresh tokens
+- [ ] WebSocket live odds feed
+- [ ] Unit and integration tests (Vitest + React Testing Library)
+- [ ] CI/CD pipeline (GitHub Actions)
+- [ ] Docker compose for local full-stack development
+- [ ] Odds format toggle (decimal / fractional / american)
+- [ ] Cash-out feature
+- [ ] Responsible gambling controls
+
+---
+
+## Contributing
+
+See [SETUP.md](SETUP.md) for the development environment setup.  
+This project uses conventional commit messages — please follow the style when contributing.
+
+---
+
+## Disclaimer
+
+> ⚠️ **This is a demonstration project only.**  
+> No real money is involved. No real bets are placed. All data is mocked locally.  
+> This application is not intended for real gambling use.
+
+---
+
+## License
+
+[MIT](LICENSE) © 2026 BetPulse
