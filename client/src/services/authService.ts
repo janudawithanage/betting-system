@@ -17,8 +17,8 @@
  *   );
  */
 
-import type { MockUser } from '@/types';
-import { mockUser } from '@/data/mockData';
+import type { MockUser } from "@/types";
+import { mockUser } from "@/data/mockData";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -34,7 +34,10 @@ export interface LoginResult {
  * Authenticates a user with email and password.
  * TODO: API → POST /api/auth/login
  */
-export async function login(_email: string, _password: string): Promise<LoginResult> {
+export async function login(
+  _email: string,
+  _password: string,
+): Promise<LoginResult> {
   // Simulate network latency in demo mode
   await new Promise((resolve) => setTimeout(resolve, 600));
 

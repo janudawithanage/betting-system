@@ -18,7 +18,7 @@
  *   }
  */
 
-import type { Match, MatchResult, Sport, League } from '@/types';
+import type { Match, MatchResult, Sport, League } from "@/types";
 import {
   liveMatches,
   upcomingMatches,
@@ -26,7 +26,7 @@ import {
   matchResults,
   sports,
   leagues,
-} from '@/data/mockData';
+} from "@/data/mockData";
 
 // ─── Matches ─────────────────────────────────────────────────────────────────
 

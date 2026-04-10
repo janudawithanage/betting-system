@@ -13,7 +13,7 @@
  *   const matches = await apiClient.get<Match[]>('/matches/live');
  */
 
-import { API_BASE_URL, API_TIMEOUT_MS } from '@/config/constants';
+import { API_BASE_URL, API_TIMEOUT_MS } from "@/config/constants";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -29,7 +29,7 @@ export class ApiError extends Error {
     message: string,
   ) {
     super(message);
-    this.name = 'ApiError';
+    this.name = "ApiError";
   }
 }
 
@@ -47,14 +47,17 @@ async function request<T>(
     method,
     signal: controller.signal,
     headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
+      "Content-Type": "application/json",
+      Accept: "application/json",
     },
     body: body !== undefined ? JSON.stringify(body) : undefined,
   }).finally(() => clearTimeout(timer));
 
   if (!response.ok) {
-    throw new ApiError(response.status, `HTTP ${response.status}: ${response.statusText}`);
+    throw new ApiError(
+      response.status,
+      `HTTP ${response.status}: ${response.statusText}`,
+    );
   }
 
   const data: T = await response.json();
@@ -64,9 +67,9 @@ async function request<T>(
 // ─── Public API ──────────────────────────────────────────────────────────────
 
 export const apiClient = {
-  get: <T>(path: string) => request<T>('GET', path),
-  post: <T>(path: string, body: unknown) => request<T>('POST', path, body),
-  put: <T>(path: string, body: unknown) => request<T>('PUT', path, body),
-  patch: <T>(path: string, body: unknown) => request<T>('PATCH', path, body),
-  delete: <T>(path: string) => request<T>('DELETE', path),
+  get: <T>(path: string) => request<T>("GET", path),
+  post: <T>(path: string, body: unknown) => request<T>("POST", path, body),
+  put: <T>(path: string, body: unknown) => request<T>("PUT", path, body),
+  patch: <T>(path: string, body: unknown) => request<T>("PATCH", path, body),
+  delete: <T>(path: string) => request<T>("DELETE", path),
 };
