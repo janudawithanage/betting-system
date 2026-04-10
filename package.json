@@ -1,0 +1,13 @@
+{
+  "name": "betting-system",
+  "version": "0.1.0",
+  "description": "BetPulse — Sports Betting Platform (monorepo root)",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "preview": "npm run preview --prefix client",
+    "lint": "npm run lint --prefix client",
+    "install:client": "npm install --prefix client"
+  }
+}
