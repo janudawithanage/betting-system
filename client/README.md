@@ -20,12 +20,12 @@ Demo login: `demo@betpulse.io` / `demo1234`
 
 ## Scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start dev server (HMR) |
-| `npm run build` | Type-check + production build → `dist/` |
-| `npm run preview` | Preview production build locally |
-| `npm run lint` | ESLint on all TS/TSX files |
+| Command           | Description                             |
+| ----------------- | --------------------------------------- |
+| `npm run dev`     | Start dev server (HMR)                  |
+| `npm run build`   | Type-check + production build → `dist/` |
+| `npm run preview` | Preview production build locally        |
+| `npm run lint`    | ESLint on all TS/TSX files              |
 
 ---
 
@@ -33,30 +33,30 @@ Demo login: `demo@betpulse.io` / `demo1234`
 
 Copy `.env.example` to `.env.local` and adjust as needed.
 
-| Variable | Default | Description |
-|---|---|---|
-| `VITE_API_BASE_URL` | `http://localhost:3000/api` | Backend REST API URL |
-| `VITE_USE_MOCK_DATA` | `true` | Use local mock data (no backend needed) |
+| Variable             | Default                     | Description                             |
+| -------------------- | --------------------------- | --------------------------------------- |
+| `VITE_API_BASE_URL`  | `http://localhost:3000/api` | Backend REST API URL                    |
+| `VITE_USE_MOCK_DATA` | `true`                      | Use local mock data (no backend needed) |
 
 ---
 
 ## Routes
 
-| Route | Page |
-|---|---|
-| `/` | Home — carousel, live events, sport quick-links |
-| `/sports` | Sportsbook — match list with sport/league filters |
-| `/sports/live` | Live Betting — in-play scoreboard cards |
-| `/sports/:sport` | Per-sport event list |
-| `/match/:id` | Match Detail — full odds markets, stats |
-| `/promotions` | Promotions & bonus offers |
-| `/results` | Historical match results |
-| `/dashboard` | User overview — balance, activity, notifications |
-| `/wallet` | Deposit / withdrawal (demo) |
-| `/favorites` | Saved matches and sports |
-| `/settings` | Account preferences |
-| `/login` | Sign in |
-| `/register` | Create account |
+| Route            | Page                                              |
+| ---------------- | ------------------------------------------------- |
+| `/`              | Home — carousel, live events, sport quick-links   |
+| `/sports`        | Sportsbook — match list with sport/league filters |
+| `/sports/live`   | Live Betting — in-play scoreboard cards           |
+| `/sports/:sport` | Per-sport event list                              |
+| `/match/:id`     | Match Detail — full odds markets, stats           |
+| `/promotions`    | Promotions & bonus offers                         |
+| `/results`       | Historical match results                          |
+| `/dashboard`     | User overview — balance, activity, notifications  |
+| `/wallet`        | Deposit / withdrawal (demo)                       |
+| `/favorites`     | Saved matches and sports                          |
+| `/settings`      | Account preferences                               |
+| `/login`         | Sign in                                           |
+| `/register`      | Create account                                    |
 
 ---
 

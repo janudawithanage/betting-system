@@ -6,13 +6,14 @@ This guide covers everything you need to run BetPulse locally.
 
 ## Prerequisites
 
-| Tool | Minimum Version | Notes |
-|---|---|---|
-| Node.js | 18.x LTS | [nodejs.org](https://nodejs.org) |
-| npm | 9.x | Bundled with Node |
-| Git | 2.x | |
+| Tool    | Minimum Version | Notes                            |
+| ------- | --------------- | -------------------------------- |
+| Node.js | 18.x LTS        | [nodejs.org](https://nodejs.org) |
+| npm     | 9.x             | Bundled with Node                |
+| Git     | 2.x             |                                  |
 
 Optional (for future backend):
+
 - PostgreSQL 15+
 - Docker & Docker Compose
 
@@ -74,21 +75,21 @@ npm run preview
 
 ## Available Scripts (inside `client/`)
 
-| Script | Description |
-|---|---|
-| `npm run dev` | Start Vite dev server with HMR |
-| `npm run build` | Type-check and build for production |
-| `npm run preview` | Preview the production build locally |
-| `npm run lint` | Run ESLint on all TypeScript/TSX files |
+| Script            | Description                            |
+| ----------------- | -------------------------------------- |
+| `npm run dev`     | Start Vite dev server with HMR         |
+| `npm run build`   | Type-check and build for production    |
+| `npm run preview` | Preview the production build locally   |
+| `npm run lint`    | Run ESLint on all TypeScript/TSX files |
 
 ---
 
 ## Demo Login
 
-| Field | Value |
-|---|---|
-| Email | `demo@betpulse.io` |
-| Password | `demo1234` |
+| Field    | Value              |
+| -------- | ------------------ |
+| Email    | `demo@betpulse.io` |
+| Password | `demo1234`         |
 
 Any valid email/password combination is accepted in demo mode.
 

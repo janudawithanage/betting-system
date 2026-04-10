@@ -144,19 +144,23 @@ When implementation begins, the frontend's `services/` layer will be the primary
 ## Key architectural decisions
 
 ### Why `services/` in the frontend?
-Pages should not know where data comes from.  The service layer is the only place
-that deals with mock files *or* API calls.  Swapping from mock to real API means
+
+Pages should not know where data comes from. The service layer is the only place
+that deals with mock files _or_ API calls. Swapping from mock to real API means
 changing one file, not touching every page.
 
 ### Why `config/constants.ts`?
+
 Magic strings and numbers scattered across files are a maintenance hazard.
 A single config module means changes to API URLs, app names, or feature flags
 happen in one place.
 
 ### Why keep `data/mockData.ts`?
+
 The mock data enables 100 % of the UI to be developed and demonstrated without
-a backend.  It is not test data — it is a deliberate demo layer.
+a backend. It is not test data — it is a deliberate demo layer.
 
 ### Why Zustand over Redux?
+
 Zustand has zero boilerplate, first-class TypeScript support, and built-in
-`persist` middleware.  For a project of this scale it is the right choice.
+`persist` middleware. For a project of this scale it is the right choice.

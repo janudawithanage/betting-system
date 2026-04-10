@@ -5,14 +5,14 @@ The frontend in `../client/` is fully functional with mock data today.
 
 ## Planned stack
 
-| Concern | Technology |
-|---|---|
-| Runtime | Node.js 20 LTS |
-| Framework | Express or Fastify |
-| Language | TypeScript |
-| ORM | Prisma |
-| Database | PostgreSQL |
-| Auth | JWT + refresh tokens |
+| Concern   | Technology                    |
+| --------- | ----------------------------- |
+| Runtime   | Node.js 20 LTS                |
+| Framework | Express or Fastify            |
+| Language  | TypeScript                    |
+| ORM       | Prisma                        |
+| Database  | PostgreSQL                    |
+| Auth      | JWT + refresh tokens          |
 | Real-time | Socket.IO or native WebSocket |
 
 ## Directory layout

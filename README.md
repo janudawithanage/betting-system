@@ -9,33 +9,33 @@ This project demonstrates a scalable client–server architecture where the fron
 
 ## Tech Stack
 
-| Concern | Technology |
-|---|---|
-| Framework | React 18 + Vite 6 |
-| Language | TypeScript 5 (strict mode) |
-| Styling | Tailwind CSS 3 |
-| Routing | React Router 7 |
-| State Management | Zustand 5 |
-| Animations | Framer Motion 11 |
-| Icons | Lucide React |
-| Package Manager | npm |
+| Concern          | Technology                 |
+| ---------------- | -------------------------- |
+| Framework        | React 18 + Vite 6          |
+| Language         | TypeScript 5 (strict mode) |
+| Styling          | Tailwind CSS 3             |
+| Routing          | React Router 7             |
+| State Management | Zustand 5                  |
+| Animations       | Framer Motion 11           |
+| Icons            | Lucide React               |
+| Package Manager  | npm                        |
 
 ---
 
 ## Current Status
 
-| Area | Status |
-|---|---|
-| UI / Component library | ✅ Complete |
-| Routing | ✅ Complete |
-| Betting slip (single + multi/acca) | ✅ Complete |
-| Auth flow (demo) | ✅ Complete |
-| Mock data layer | ✅ Complete |
-| Service / API layer (frontend contracts) | ✅ Scaffolded |
-| Backend / REST API | 🔲 Not started |
-| Database | 🔲 Not started |
-| Real-time odds (WebSocket) | 🔲 Not started |
-| Tests | 🔲 Not started |
+| Area                                     | Status         |
+| ---------------------------------------- | -------------- |
+| UI / Component library                   | ✅ Complete    |
+| Routing                                  | ✅ Complete    |
+| Betting slip (single + multi/acca)       | ✅ Complete    |
+| Auth flow (demo)                         | ✅ Complete    |
+| Mock data layer                          | ✅ Complete    |
+| Service / API layer (frontend contracts) | ✅ Scaffolded  |
+| Backend / REST API                       | 🔲 Not started |
+| Database                                 | 🔲 Not started |
+| Real-time odds (WebSocket)               | 🔲 Not started |
+| Tests                                    | 🔲 Not started |
 
 ---
 
@@ -70,10 +70,10 @@ npm run dev
 
 **Demo credentials:**
 
-| Field | Value |
-|---|---|
-| Email | `demo@betpulse.io` |
-| Password | `demo1234` |
+| Field    | Value              |
+| -------- | ------------------ |
+| Email    | `demo@betpulse.io` |
+| Password | `demo1234`         |
 
 ---
 
