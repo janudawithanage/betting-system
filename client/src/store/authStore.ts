@@ -1,7 +1,10 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import type { MockUser } from '@/types';
-import { login as loginService, logout as logoutService } from '@/services/authService';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import type { MockUser } from "@/types";
+import {
+  login as loginService,
+  logout as logoutService,
+} from "@/services/authService";
 
 interface AuthState {
   user: MockUser | null;
@@ -51,6 +54,6 @@ export const useAuthStore = create<AuthState>()(
         set({ user: { ...user, favoritesSports: updated } });
       },
     }),
-    { name: 'betpulse-auth' }
-  )
+    { name: "betpulse-auth" },
+  ),
 );
