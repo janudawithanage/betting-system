@@ -5,14 +5,14 @@
  * Used by SportsbookPage and any future page that needs to filter a match list.
  */
 
-import { useState, useMemo } from 'react';
-import type { Match, FilterState } from '@/types';
+import { useState, useMemo } from "react";
+import type { Match, FilterState } from "@/types";
 
 const DEFAULT_FILTER: FilterState = {
-  sport: 'all',
-  league: 'all',
-  status: 'all',
-  search: '',
+  sport: "all",
+  league: "all",
+  status: "all",
+  search: "",
 };
 
 interface UseMatchFiltersResult {
@@ -31,15 +31,15 @@ export function useMatchFilters(matches: Match[]): UseMatchFiltersResult {
   const filteredMatches = useMemo(() => {
     let result = matches;
 
-    if (filter.status !== 'all') {
+    if (filter.status !== "all") {
       result = result.filter((m) => m.status === filter.status);
     }
 
-    if (filter.sport !== 'all') {
+    if (filter.sport !== "all") {
       result = result.filter((m) => m.sportId === filter.sport);
     }
 
-    if (filter.league !== 'all') {
+    if (filter.league !== "all") {
       result = result.filter((m) => m.leagueId === filter.league);
     }
 
@@ -56,12 +56,12 @@ export function useMatchFilters(matches: Match[]): UseMatchFiltersResult {
   }, [matches, filter]);
 
   const liveMatches = useMemo(
-    () => filteredMatches.filter((m) => m.status === 'live'),
+    () => filteredMatches.filter((m) => m.status === "live"),
     [filteredMatches],
   );
 
   const upcomingMatches = useMemo(
-    () => filteredMatches.filter((m) => m.status === 'upcoming'),
+    () => filteredMatches.filter((m) => m.status === "upcoming"),
     [filteredMatches],
   );
 
