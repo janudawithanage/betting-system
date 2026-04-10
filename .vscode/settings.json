@@ -4,9 +4,7 @@
   "editor.tabSize": 2,
   "editor.rulers": [100],
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "tailwindCSS.experimental.classRegex": [
-    ["cn\\(([^)]*)\\)", "'([^']*)'"]
-  ],
+  "tailwindCSS.experimental.classRegex": [["cn\\(([^)]*)\\)", "'([^']*)'"]],
   "files.associations": {
     "*.css": "tailwindcss"
   }
