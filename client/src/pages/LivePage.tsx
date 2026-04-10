@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion';
-import { Activity, Zap } from 'lucide-react';
-import { LiveMatchCard } from '@/components/sportsbook/LiveMatchCard';
-import { getLiveMatches } from '@/services/matchService';
+import { motion } from "framer-motion";
+import { Activity, Zap } from "lucide-react";
+import { LiveMatchCard } from "@/components/sportsbook/LiveMatchCard";
+import { getLiveMatches } from "@/services/matchService";
 
 const liveMatches = getLiveMatches();
-import { EmptyState } from '@/components/common/EmptyState';
+import { EmptyState } from "@/components/common/EmptyState";
 
 export function LivePage() {
   return (
@@ -16,7 +16,9 @@ export function LivePage() {
         </div>
         <div>
           <h1 className="text-2xl font-bold text-white">Live Betting</h1>
-          <p className="text-sm text-slate-400">{liveMatches.length} events in play right now</p>
+          <p className="text-sm text-slate-400">
+            {liveMatches.length} events in play right now
+          </p>
         </div>
         <span className="ml-auto flex items-center gap-1.5 px-3 py-1.5 bg-red-500/20 border border-red-500/30 rounded-full text-red-400 text-sm font-bold">
           <span className="live-dot" />
@@ -29,7 +31,10 @@ export function LivePage() {
         <Zap className="w-6 h-6 text-brand-400 flex-shrink-0" />
         <div>
           <p className="text-sm font-semibold text-white">Live Bet Guarantee</p>
-          <p className="text-xs text-slate-400">Place live bets with the lowest latency on all markets. Odds update in real-time.</p>
+          <p className="text-xs text-slate-400">
+            Place live bets with the lowest latency on all markets. Odds update
+            in real-time.
+          </p>
         </div>
         <div className="ml-auto text-right flex-shrink-0">
           <p className="text-xs text-slate-500">Cash Out</p>
@@ -39,10 +44,16 @@ export function LivePage() {
 
       {/* Market tabs */}
       <div className="flex gap-2 overflow-x-auto no-scrollbar">
-        {['All Sports', '⚽ Football', '🏀 Basketball', '🏏 Cricket', '🎾 Tennis'].map((tab, i) => (
+        {[
+          "All Sports",
+          "⚽ Football",
+          "🏀 Basketball",
+          "🏏 Cricket",
+          "🎾 Tennis",
+        ].map((tab, i) => (
           <button
             key={tab}
-            className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all ${i === 0 ? 'bg-brand-500 text-white' : 'bg-bg-elevated text-slate-400 hover:text-white'}`}
+            className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium transition-all ${i === 0 ? "bg-brand-500 text-white" : "bg-bg-elevated text-slate-400 hover:text-white"}`}
           >
             {tab}
           </button>

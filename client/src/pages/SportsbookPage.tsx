@@ -1,9 +1,9 @@
-import { MatchCard } from '@/components/sportsbook/MatchCard';
-import { FilterBar } from '@/components/sportsbook/FilterBar';
-import { SearchInput } from '@/components/common/SearchInput';
-import { EmptyState } from '@/components/common/EmptyState';
-import { getAllMatches } from '@/services/matchService';
-import { useMatchFilters } from '@/hooks/useMatchFilters';
+import { MatchCard } from "@/components/sportsbook/MatchCard";
+import { FilterBar } from "@/components/sportsbook/FilterBar";
+import { SearchInput } from "@/components/common/SearchInput";
+import { EmptyState } from "@/components/common/EmptyState";
+import { getAllMatches } from "@/services/matchService";
+import { useMatchFilters } from "@/hooks/useMatchFilters";
 
 const allMatches = getAllMatches();
 
@@ -25,10 +25,7 @@ export function SportsbookPage() {
           onChange={(v) => updateFilter({ search: v })}
           className="w-full sm:w-72"
         />
-        <FilterBar
-          filter={filter}
-          onChange={updateFilter}
-        />
+        <FilterBar filter={filter} onChange={updateFilter} />
       </div>
 
       {/* Live section */}
@@ -40,7 +37,9 @@ export function SportsbookPage() {
             <span className="text-xs text-slate-500">({live.length})</span>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-            {live.map((m) => <MatchCard key={m.id} match={m} />)}
+            {live.map((m) => (
+              <MatchCard key={m.id} match={m} />
+            ))}
           </div>
         </section>
       )}
@@ -53,7 +52,9 @@ export function SportsbookPage() {
             <span className="text-xs text-slate-500">({upcoming.length})</span>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-            {upcoming.map((m) => <MatchCard key={m.id} match={m} />)}
+            {upcoming.map((m) => (
+              <MatchCard key={m.id} match={m} />
+            ))}
           </div>
         </section>
       )}
