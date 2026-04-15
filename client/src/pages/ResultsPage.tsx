@@ -1,17 +1,13 @@
 import { useState, useMemo } from "react";
-import {
-  getMatchResults,
-  getLeagues,
-  getSports,
-} from "@/services/matchService";
+import { Trophy } from "lucide-react";
+import { getMatchResults, getLeagues, getSports } from "@/services/matchService";
+import { formatMatchDate, cn } from "@/utils";
+import { SearchInput } from "@/components/common/SearchInput";
+import { EmptyState } from "@/components/common/EmptyState";
 
 const matchResults = getMatchResults();
 const leagues = getLeagues();
 const sportsData = getSports();
-import { formatMatchDate, cn } from "@/utils";
-import { SearchInput } from "@/components/common/SearchInput";
-import { EmptyState } from "@/components/common/EmptyState";
-import { Trophy } from "lucide-react";
 
 const dateFilters = ["Today", "Yesterday", "Last 3 days", "This week"];
 
