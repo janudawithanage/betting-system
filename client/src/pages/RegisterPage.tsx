@@ -36,7 +36,7 @@ export function RegisterPage() {
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', password: '', confirm: '', agree: false });
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { login } = useAuthStore();
+  const { register } = useAuthStore();
   const { addToast } = useUIStore();
   const navigate = useNavigate();
 
@@ -49,10 +49,20 @@ export function RegisterPage() {
       return;
     }
     setLoading(true);
-    await login(form.email, form.password);
+    const success = await register({
+      firstName: form.firstName,
+      lastName: form.lastName,
+      email: form.email,
+      password: form.password,
+      phone: form.phone,
+    });
     setLoading(false);
-    addToast({ type: 'success', title: 'Account Created!', message: 'Welcome to BetPulse!' });
-    navigate('/dashboard');
+    if (success) {
+      addToast({ type: 'success', title: 'Account Created!', message: 'Welcome to BetPulse!' });
+      navigate('/dashboard');
+    } else {
+      addToast({ type: 'error', title: 'Registration failed', message: 'Please try again.' });
+    }
   };
 
   return (
