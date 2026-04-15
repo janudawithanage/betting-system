@@ -28,26 +28,6 @@ export interface LoginResult {
   error?: string;
 }
 
-export interface RegisterInput {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  phone?: string;
-}
-
-function createDemoUser(email: string, firstName?: string, lastName?: string): MockUser {
-  const username = email.split("@")[0] || mockUser.username;
-
-  return {
-    ...mockUser,
-    email,
-    username,
-    firstName: firstName?.trim() || mockUser.firstName,
-    lastName: lastName?.trim() || mockUser.lastName,
-  };
-}
-
 // ─── Auth functions ───────────────────────────────────────────────────────────
 
 /**
@@ -55,14 +35,14 @@ function createDemoUser(email: string, firstName?: string, lastName?: string): M
  * TODO: API → POST /api/auth/login
  */
 export async function login(
-  email: string,
+  _email: string,
   _password: string,
 ): Promise<LoginResult> {
   // Simulate network latency in demo mode
   await new Promise((resolve) => setTimeout(resolve, 600));
 
   // Demo: always succeeds — swap this block for a real API call when backend is ready
-  return { success: true, user: createDemoUser(email) };
+  return { success: true, user: mockUser };
 }
 
 /**
@@ -79,17 +59,10 @@ export async function logout(): Promise<void> {
  * TODO: API → POST /api/auth/register
  */
 export async function register(
-  input: RegisterInput,
+  _email: string,
+  _password: string,
+  _username: string,
 ): Promise<LoginResult> {
   await new Promise((resolve) => setTimeout(resolve, 800));
-  return {
-    success: true,
-    user: {
-      ...createDemoUser(input.email, input.firstName, input.lastName),
-      level: "standard",
-      verified: false,
-      favoritesSports: ["football"],
-      favoriteMatches: [],
-    },
-  };
+  return { success: true, user: mockUser };
 }

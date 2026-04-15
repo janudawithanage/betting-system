@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import { mockUser, transactions } from '@/data/mockData';
 import { formatCurrency, formatMatchDate, cn } from '@/utils';
 import { useAuthStore } from '@/store/authStore';
-import { useUIStore } from '@/store/uiStore';
 import { AlertCircle, CreditCard, Smartphone, Building, Bitcoin, ArrowUpRight, ArrowDownRight, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -23,13 +21,7 @@ const statusColors: Record<string, string> = {
 
 export function WalletPage() {
   const { isLoggedIn, user } = useAuthStore();
-  const { addToast } = useUIStore();
   const profile = user || mockUser;
-  const [depositAmount, setDepositAmount] = useState('50');
-  const [withdrawAmount, setWithdrawAmount] = useState('');
-  const [withdrawMethod, setWithdrawMethod] = useState('Bank Transfer');
-  const [withdrawAccount, setWithdrawAccount] = useState('');
-  const [selectedDepositMethod, setSelectedDepositMethod] = useState(depositMethods[0].name);
 
   if (!isLoggedIn) {
     return (
@@ -75,11 +67,6 @@ export function WalletPage() {
               <motion.button
                 key={name}
                 whileHover={{ scale: 1.01, x: 4 }}
-                type="button"
-                onClick={() => {
-                  setSelectedDepositMethod(name);
-                  addToast({ type: 'info', title: 'Deposit method selected', message: `${name} is ready for demo deposits.` });
-                }}
                 className="w-full card p-4 flex items-center gap-4 hover:border-brand-500/50 transition-all text-left"
               >
                 <div className="w-10 h-10 bg-bg-elevated rounded-xl flex items-center justify-center flex-shrink-0">
@@ -88,7 +75,6 @@ export function WalletPage() {
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <p className="text-sm font-semibold text-slate-200">{name}</p>
-                    {selectedDepositMethod === name && <span className="px-1.5 py-0.5 bg-green-500/20 text-green-400 text-xs rounded-md font-medium">Selected</span>}
                     {popular && <span className="px-1.5 py-0.5 bg-brand-500/20 text-brand-400 text-xs rounded-md font-medium">Popular</span>}
                   </div>
                   <p className="text-xs text-slate-500 mt-0.5">{time} • {fee}</p>
@@ -103,42 +89,14 @@ export function WalletPage() {
             <p className="text-sm font-medium text-slate-400 mb-2">Quick Deposit</p>
             <div className="flex gap-2 flex-wrap">
               {[20, 50, 100, 200, 500].map((amt) => (
-                <button
-                  key={amt}
-                  type="button"
-                  onClick={() => {
-                    setDepositAmount(String(amt));
-                    addToast({ type: 'success', title: 'Deposit amount selected', message: `${formatCurrency(amt)} prepared for ${selectedDepositMethod}.` });
-                  }}
-                  className="px-4 py-2 bg-bg-elevated hover:bg-brand-500/20 border border-bg-border hover:border-brand-500/50 rounded-lg text-sm font-medium text-slate-300 hover:text-brand-400 transition-all"
-                >
+                <button key={amt} className="px-4 py-2 bg-bg-elevated hover:bg-brand-500/20 border border-bg-border hover:border-brand-500/50 rounded-lg text-sm font-medium text-slate-300 hover:text-brand-400 transition-all">
                   ${amt}
                 </button>
               ))}
             </div>
             <div className="mt-3 flex gap-2">
-              <input
-                type="number"
-                min="10"
-                value={depositAmount}
-                onChange={(e) => setDepositAmount(e.target.value)}
-                placeholder="Custom amount"
-                className="input-dark flex-1"
-              />
-              <button
-                type="button"
-                onClick={() => {
-                  const amount = Number(depositAmount);
-                  if (!amount || amount < 10) {
-                    addToast({ type: 'warning', title: 'Minimum deposit is $10', message: 'Please enter a valid amount.' });
-                    return;
-                  }
-                  addToast({ type: 'success', title: 'Deposit initiated', message: `${formatCurrency(amount)} via ${selectedDepositMethod} is queued in demo mode.` });
-                }}
-                className="btn-primary px-6"
-              >
-                Deposit
-              </button>
+              <input type="number" placeholder="Custom amount" className="input-dark flex-1" />
+              <button className="btn-primary px-6">Deposit</button>
             </div>
             <p className="text-xs text-slate-600 mt-2">Min $10 • Max $10,000 per transaction</p>
           </div>
@@ -150,7 +108,7 @@ export function WalletPage() {
           <div className="card p-5 space-y-4">
             <div>
               <label className="text-xs text-slate-400 block mb-1.5">Withdrawal Method</label>
-              <select value={withdrawMethod} onChange={(e) => setWithdrawMethod(e.target.value)} className="input-dark text-sm">
+              <select className="input-dark text-sm">
                 <option>Bank Transfer</option>
                 <option>Credit Card</option>
                 <option>Bitcoin</option>
@@ -158,44 +116,14 @@ export function WalletPage() {
             </div>
             <div>
               <label className="text-xs text-slate-400 block mb-1.5">Amount ($)</label>
-              <input
-                type="number"
-                min="10"
-                value={withdrawAmount}
-                onChange={(e) => setWithdrawAmount(e.target.value)}
-                placeholder="Enter amount"
-                className="input-dark"
-              />
+              <input type="number" placeholder="Enter amount" className="input-dark" />
               <p className="text-xs text-slate-600 mt-1">Available: {formatCurrency(profile.balance)}</p>
             </div>
             <div>
               <label className="text-xs text-slate-400 block mb-1.5">Account / Wallet</label>
-              <input
-                type="text"
-                value={withdrawAccount}
-                onChange={(e) => setWithdrawAccount(e.target.value)}
-                placeholder="IBAN / Wallet address"
-                className="input-dark"
-              />
+              <input type="text" placeholder="IBAN / Wallet address" className="input-dark" />
             </div>
-            <button
-              type="button"
-              onClick={() => {
-                const amount = Number(withdrawAmount);
-                if (!amount || amount < 10) {
-                  addToast({ type: 'warning', title: 'Minimum withdrawal is $10', message: 'Please enter a valid amount.' });
-                  return;
-                }
-                if (!withdrawAccount.trim()) {
-                  addToast({ type: 'warning', title: 'Account required', message: 'Enter an account or wallet address.' });
-                  return;
-                }
-                addToast({ type: 'success', title: 'Withdrawal requested', message: `${formatCurrency(amount)} via ${withdrawMethod} is pending review.` });
-                setWithdrawAmount('');
-                setWithdrawAccount('');
-              }}
-              className="w-full btn-secondary flex items-center justify-center gap-2"
-            >
+            <button className="w-full btn-secondary flex items-center justify-center gap-2">
               <ArrowDownRight className="w-4 h-4" />
               Request Withdrawal
             </button>
