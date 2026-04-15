@@ -1,15 +1,18 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { MockUser } from "@/types";
+import type { RegisterInput } from "@/services/authService";
 import {
   login as loginService,
   logout as logoutService,
+  register as registerService,
 } from "@/services/authService";
 
 interface AuthState {
   user: MockUser | null;
   isLoggedIn: boolean;
   login: (email: string, password: string) => Promise<boolean>;
+  register: (input: RegisterInput) => Promise<boolean>;
   logout: () => void;
   toggleFavoriteMatch: (matchId: string) => void;
   toggleFavoriteSport: (sportId: string) => void;
@@ -23,6 +26,14 @@ export const useAuthStore = create<AuthState>()(
 
       login: async (email: string, password: string) => {
         const result = await loginService(email, password);
+        if (result.success && result.user) {
+          set({ user: result.user, isLoggedIn: true });
+        }
+        return result.success;
+      },
+
+      register: async (input: RegisterInput) => {
+        const result = await registerService(input);
         if (result.success && result.user) {
           set({ user: result.user, isLoggedIn: true });
         }
